@@ -1,0 +1,4 @@
+name: TreeTest
+version: ${project.version}
+main: treetest.treetest.TreeTest
+api-version: 1.13
