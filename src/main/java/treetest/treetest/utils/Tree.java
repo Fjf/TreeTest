@@ -70,7 +70,7 @@ public class Tree {
 
         // Dont add branches when parent too low
         if (parent.getEnd().getY() > parent.getLength() * 1.4 && parent.getLength() != 0) {
-            if (branchChance > 1 - Math.pow(0.5, thickness)) { // 2 branches
+            if (branchChance > 1 - Math.pow(0.5, 1 / thickness + 1)) { // 2 branches
                 tries = 0;
                 // Try 10 times to add a branch
                 while (tries++ < 10) {
@@ -84,7 +84,7 @@ public class Tree {
                         break;
                 }
             }
-            if (branchChance > 1 - Math.pow(0.6, thickness)) { // 3 branches
+            if (branchChance > 1 - Math.pow(0.6, 1 / thickness + 1)) { // 3 branches
                 tries = 0;
                 // Try 10 times to add a branch
                 while (tries++ < 10) {
