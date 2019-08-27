@@ -72,6 +72,10 @@ public class Branch {
 
     public void createChild(Vector direction, VectorDirectionData data, int length, double width) {
         Branch child = new Branch(this.getEnd(), direction, data, length,this, width / 2);
+        createChild(child);
+    }
+
+    public void createChild(Branch child) {
         this.children.add(child);
     }
 
@@ -81,11 +85,11 @@ public class Branch {
 
     @Override
     public String toString() {
-        return format("At: (%.2f, %.2f, %.2f) | End: (%.2f, %.2f, %.2f) | Direction: (%.2f, %.2f, %.2f) | Length: %d",
+        return format("At: (%.2f, %.2f, %.2f) | End: (%.2f, %.2f, %.2f) | Direction: (%.2f, %.2f, %.2f) | Length: %d | Radius: %.2f",
                 this.start.getX(), this.start.getY(), this.start.getZ(),
                 this.getEnd().getX(), this.getEnd().getY(), this.getEnd().getZ(),
                 this.direction.getX(), this.direction.getY(), this.direction.getZ(),
-                this.length);
+                this.length, this.radius);
     }
 
     public VectorDirectionData getData() {
