@@ -1,20 +1,10 @@
-package treetest.treetest;
+package fjf.generation;
 import org.bukkit.*;
-import org.bukkit.block.BlockState;
-import org.bukkit.block.data.BlockData;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.server.BroadcastMessageEvent;
 import org.bukkit.event.world.StructureGrowEvent;
 import org.bukkit.util.Vector;
-import treetest.treetest.utils.Tree;
-
-import javax.swing.text.Position;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Random;
+import fjf.generation.structures.Tree;
 
 import static java.lang.String.format;
 

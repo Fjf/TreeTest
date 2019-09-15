@@ -1,5 +1,6 @@
-package treetest.treetest.utils;
+package fjf.generation.structures;
 
+import fjf.generation.utils.VectorDirectionData;
 import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
@@ -62,6 +63,7 @@ public class Branch {
     public Branch(Vector start, Vector direction, VectorDirectionData data, int length, Branch parent, double radius) {
         this.start = start;
         this.direction = direction;
+
         this.length = length;
         this.data = data;
         this.radius = radius;

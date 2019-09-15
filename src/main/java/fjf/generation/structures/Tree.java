@@ -1,6 +1,6 @@
-package treetest.treetest.utils;
+package fjf.generation.structures;
 
-import org.bukkit.Bukkit;
+import fjf.generation.utils.VectorDirectionData;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
@@ -57,20 +57,23 @@ public class Tree {
 
         // Amount of branches from current branch
         float branchChance = rand.nextFloat();
+        int nBranches =  Math.max(Math.min((int) Math.floor(branchChance * 10.0) - 2, 5), 1);
+
 
         int tries = 0;
         // Try 10 times to add a branch
         while (tries++ < 10) {
             angle =   (rand.nextFloat() - 0.5)*0.6 + 0.25 + parent.getData().getTheta(); // Theta
-            rotation = rand.nextFloat() * 2 * Math.PI + parent.getData().getPhi(); // Phi
+            rotation = (rand.nextFloat() * 2 * Math.PI / nBranches) * 1; // Phi
 
             if (addBranch(parent, thickness, angle, rotation, length))
                 break;
         }
 
+
         // Dont add branches when parent too low
         if (parent.getEnd().getY() > parent.getLength() * 1.4 && parent.getLength() != 0) {
-            if (branchChance > 1 - Math.pow(0.5, 1 / thickness + 1)) { // 2 branches
+            if (branchChance > 0.5) { // 2 branches
                 tries = 0;
                 // Try 10 times to add a branch
                 while (tries++ < 10) {
@@ -78,13 +81,13 @@ public class Tree {
                             (0.5 - rand.nextInt(2)) * Math.PI + // 90 degree angle
                             parent.getData().getTheta(); // Theta
 
-                    rotation = rand.nextFloat() * 2 * Math.PI + parent.getData().getPhi(); // Phi
+                    rotation = (rand.nextFloat() * 2 * Math.PI / nBranches) * 2; // Phi
 
                     if (addBranch(parent, thickness * (rand.nextFloat() * 0.2f + 0.8f), angle, rotation, length))
                         break;
                 }
             }
-            if (branchChance > 1 - Math.pow(0.6, 1 / thickness + 1)) { // 3 branches
+            if (branchChance > 0.6) { // 3 branches
                 tries = 0;
                 // Try 10 times to add a branch
                 while (tries++ < 10) {
@@ -92,13 +95,13 @@ public class Tree {
                             (0.5 - rand.nextInt(2)) * Math.PI + // 90 degree angle
                             parent.getData().getTheta(); // Theta
 
-                    rotation = rand.nextFloat() * 2 * Math.PI + parent.getData().getPhi(); // Phi
+                    rotation = (rand.nextFloat() * 2 * Math.PI / nBranches) * 3; // Phi
 
                     if (addBranch(parent, thickness * (rand.nextFloat() * 0.2f + 0.8f), angle, rotation, length))
                         break;
                 }
             }
-            if (branchChance > 1 - Math.pow(0.7, 1 / thickness + 1)) { // 3 branches
+            if (branchChance > 0.7) { // 4 branches
                 tries = 0;
                 // Try 10 times to add a branch
                 while (tries++ < 10) {
@@ -106,7 +109,21 @@ public class Tree {
                             (0.5 - rand.nextInt(2)) * Math.PI + // 90 degree angle
                             parent.getData().getTheta(); // Theta
 
-                    rotation = rand.nextFloat() * 2 * Math.PI + parent.getData().getPhi(); // Phi
+                    rotation = (rand.nextFloat() * 2 * Math.PI / nBranches) * 4; // Phi
+
+                    if (addBranch(parent, thickness * (rand.nextFloat() * 0.2f + 0.8f), angle, rotation, length))
+                        break;
+                }
+            }
+            if (branchChance > 0.8) { // 5 branches
+                tries = 0;
+                // Try 10 times to add a branch
+                while (tries++ < 10) {
+                    angle = (rand.nextFloat() - 0.5) * 0.6 + 0.25 + // Randomized angle
+                            (0.5 - rand.nextInt(2)) * Math.PI + // 90 degree angle
+                            parent.getData().getTheta(); // Theta
+
+                    rotation = (rand.nextFloat() * 2 * Math.PI / nBranches) * 5; // Phi
 
                     if (addBranch(parent, thickness * (rand.nextFloat() * 0.2f + 0.8f), angle, rotation, length))
                         break;
@@ -171,6 +188,8 @@ public class Tree {
     private void fillBranch(Branch root) {
         // Orthogonal vector to original vector.
         Vector bottom = new Vector(-root.getDirection().getY(), root.getDirection().getX(), 0).normalize();
+
+
         Vector top = new Vector(bottom.getX(), bottom.getY(), bottom.getZ());
 
         top = top.multiply(root.getRadius());
@@ -197,7 +216,6 @@ public class Tree {
                         Block b = world.getBlockAt((int) (x + end.getX()), (int) (y + end.getY()), (int) (z + end.getZ()));
                         if (b.getType() == Material.AIR) {
                             b.setType(Material.OAK_LEAVES);
-
                         }
                     }
                 }
@@ -206,6 +224,7 @@ public class Tree {
 
         int steps = (int) Math.pow(root.getRadius() * 4, 2);
         for (int i = 0; i < steps; i++) {
+
             bottom.rotateAroundAxis(root.getDirection(), (2 * Math.PI / steps) * i);
             direction.rotateAroundAxis(root.getDirection(), (2 * Math.PI / steps) * i);
 

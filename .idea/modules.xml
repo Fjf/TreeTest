@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TreeTest.iml" filepath="$PROJECT_DIR$/TreeTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FjfGeneration.iml" filepath="$PROJECT_DIR$/FjfGeneration.iml" />
     </modules>
   </component>
 </project>

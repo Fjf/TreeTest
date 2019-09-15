@@ -1,5 +1,5 @@
 name: FjfGeneration
-version: ${project.version}
+version: 1.0-SNAPSHOT
 main: fjf.generation.Generation
 api-version: 1.13
 load: STARTUP

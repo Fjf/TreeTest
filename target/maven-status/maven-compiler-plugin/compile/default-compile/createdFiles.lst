@@ -1,0 +1,7 @@
+fjf\generation\Generation.class
+fjf\generation\utils\Branch.class
+fjf\generation\utils\Tree.class
+fjf\generation\SaplingGrowListener.class
+fjf\generation\utils\VectorDirectionData.class
+fjf\generation\utils\DiamondSquare.class
+fjf\generation\CustomChunkGenerator.class

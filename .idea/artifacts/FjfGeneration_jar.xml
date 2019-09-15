@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="FjfGeneration:jar">
+    <output-path>E:/Documents/Minecraft/TestServer/plugins</output-path>
+    <root id="archive" name="FjfGeneration.jar">
+      <element id="module-output" name="FjfGeneration" />
+    </root>
+  </artifact>
+</component>
